@@ -1,0 +1,19 @@
+{
+  "name": "aospextended-api",
+  "version": "1.0.0",
+  "description": "API For AospExtended",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^3.25.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
