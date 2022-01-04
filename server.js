@@ -25,6 +25,7 @@ const envSchema = {
     'DB_PASSWORD',
     'TELEGRAM_BOT_TOKEN',
     'TELEGRAM_CHAT_ID',
+    'NTBA_FIX_319',
   ],
   properties: {
     PORT: {
@@ -48,6 +49,10 @@ const envSchema = {
     },
     TELEGRAM_CHAT_ID: {
       type: 'string',
+    },
+    NTBA_FIX_319: {
+      type: 'number',
+      default: 1,
     },
   },
 }
