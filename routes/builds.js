@@ -9,6 +9,9 @@ import DownloadStats from '../models/DownloadStats.js'
 export default async function builds(fastify, options) {
   const { redis: client } = fastify
 
+  // @route  GET builds/:codename/:androidVersion
+  // @desc   Returns all builds for the particular device for particular android version
+  // @access Public
   fastify.get('/:codename/:androidVersion', async (request, reply) => {
     const { codename, androidVersion } = request.params
     const result = await client.get(codename + '_' + androidVersion + '_builds')
