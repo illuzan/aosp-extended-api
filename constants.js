@@ -11,7 +11,7 @@ const devicesBranch = 'main'
 const buildsBranch = 'master'
 const cacheInterval = 1800
 const botInterval = 300000
-const buildsDir = '/Users/gaurav/aexbuilds/builds/'
+const buildsDir = '/home/aexbuilds/builds/'
 const addonsDir = '/home/aexbuilds/addons/'
 const pushOperation = 'push'
 
