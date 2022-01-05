@@ -8,4 +8,5 @@ const botCacheSchema = new Schema(
   { versionKey: false }
 )
 
-module.exports = mongoose.model('botcaches', botCacheSchema)
+const BotCache = mongoose.model('botcaches', botCacheSchema)
+export default BotCache

@@ -10,4 +10,5 @@ const downloadStatsSchema = new Schema(
   { versionKey: false }
 )
 
-module.exports = mongoose.model('downloadStats', downloadStatsSchema)
+const DownloadStats = mongoose.model('downloadStats', downloadStatsSchema)
+export default DownloadStats

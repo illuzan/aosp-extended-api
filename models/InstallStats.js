@@ -14,4 +14,5 @@ const installStatsSchema = new Schema(
   { versionKey: false }
 )
 
-module.exports = mongoose.model('installstats', installStatsSchema)
+const InstallStats = mongoose.model('installstats', installStatsSchema)
+export default InstallStats
