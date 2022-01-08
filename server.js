@@ -94,7 +94,7 @@ fastify.register(builds, { prefix: '/builds' })
 fastify.register(devices, { prefix: '/devices' })
 fastify.register(download, { prefix: '/download' })
 fastify.register(ota, { prefix: '/ota' })
-fastify.register(otaNew, { prefix: '/ota_V2' })
+fastify.register(otaNew, { prefix: '/ota_v2' })
 fastify.register(stats, { prefix: '/stats' })
 
 const connectDB = async () => {
