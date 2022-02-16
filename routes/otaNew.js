@@ -22,10 +22,10 @@ export default async function otaNew(fastify, options) {
     const { codename, androidVersion } = request.params
 
     if (
-      androidVersion != 'q' &&
-      androidVersion != 'q_gapps' &&
       androidVersion != 'r' &&
-      androidVersion != 'r_gapps'
+      androidVersion != 'r_gapps' &&
+      androidVersion != 's' &&
+      androidVersion != 's_gapps'
     ) {
       let otaFailResponse = {
         error: true,
