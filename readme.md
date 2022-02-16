@@ -9,13 +9,13 @@ API server for [AospExtended](https://www.aospextended.com/) made with [Fastify]
 Clone the project
 
 ```bash
-  git clone https://github.com/allstargaurav/aospextended-api
+  git clone https://github.com/illuzan/aosp-extended-api
 ```
 
 Go to the project directory
 
 ```bash
-  cd aospextended-api
+  cd aosp-extended-api
 ```
 
 Install dependencies
@@ -57,3 +57,4 @@ To run this project, you will need to add the following environment variables to
 ## Authors
 
 - Gaurav Singh ([@illuzan](https://twitter.com/illuzan))
+- Shubham Singh ([@ishubhamsingh](https://github.com/ishubhamsingh))
