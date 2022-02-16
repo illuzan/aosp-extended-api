@@ -11,18 +11,18 @@
   "author": "gaurav",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.24.0",
-    "fastify": "^3.25.3",
+    "axios": "^0.26.0",
+    "fastify": "^3.27.1",
     "fastify-compress": "^4.0.1",
     "fastify-cors": "^6.0.2",
     "fastify-env": "^2.1.1",
     "fastify-redis": "^4.3.3",
     "fastify-static": "^4.5.0",
-    "filesize": "^8.0.6",
+    "filesize": "^8.0.7",
     "lodash-es": "^4.17.21",
     "md5": "^2.3.0",
     "moment": "^2.29.1",
-    "mongoose": "^6.1.4",
+    "mongoose": "^6.2.1",
     "node-telegram-bot-api": "^0.56.0"
   },
   "devDependencies": {
