@@ -23,7 +23,8 @@
     "md5": "^2.3.0",
     "moment": "^2.29.1",
     "mongoose": "^6.2.1",
-    "node-telegram-bot-api": "^0.56.0"
+    "node-telegram-bot-api": "^0.56.0",
+    "redis": "^4.0.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
