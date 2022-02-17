@@ -141,7 +141,7 @@ function isValidFile(file) {
   )
 }
 
-async function isValidMd5(basePath, file) {
+function isValidMd5(basePath, file) {
   let result = false
 
   if (existsSync(basePath + file + '.md5sum')) {
@@ -150,11 +150,11 @@ async function isValidMd5(basePath, file) {
       let fileCheckSumString = readFileSync(basePath + file + '.md5sum', 'utf8')
       fileCheckSum = fileCheckSumString.match(/[a-f0-9]{32}/g)
       if (fileCheckSum[0] === null) {
-        return
+        return false
       }
     } catch (error) {
       console.log(error)
-      return
+      return false
     }
     result = fileCheckSum[0] !== ''
   }
