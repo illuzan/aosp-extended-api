@@ -1,23 +1,26 @@
+import 'dotenv/config'
 import moment from 'moment'
 import filesize from 'filesize'
 import BotCache from '../models/BotCache.js'
 import TelegramBot from 'node-telegram-bot-api'
 import { isPushed } from '../utils/utils.js'
 import { Clienthost } from '../constants.js'
+import { connectDB } from '../database.js'
 import { createClient } from 'redis'
 
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: false })
 
 export default async function pushNotification() {
+  await connectDB()
   const client = createClient()
   client.on('error', (error) => console.log('Redis Client Error', error))
   await client.connect()
 
   console.log('Sending telegram notification')
   const result = await client.get('devices')
+
   if (result) {
     let devices = JSON.parse(result)
-
     devices.map((device) => {
       device.supported_versions.map(async (version) => {
         const result = await client.get(
@@ -28,7 +31,8 @@ export default async function pushNotification() {
           if (buildList.length !== 0) {
             try {
               let latestBuild = buildList[0]
-              let doc = await BotCache.find()
+              const doc = await BotCache.find()
+
               if (!isPushed(doc, latestBuild.md5)) {
                 console.log(
                   'Pushing for',
@@ -45,7 +49,7 @@ export default async function pushNotification() {
                     latestBuild.timestamp,
                     'YYYYMMDD-Hmm'
                   ).format('MMMM Do YYYY, h:mm a')}\n` +
-                  `▪️ File size: ${filesize(latestBuild.file_size).human()}\n` +
+                  `▪️ File size: ${filesize(latestBuild.file_size)}\n` +
                   `▪️ Md5: ${latestBuild.md5}\n\n` +
                   `▪️ <a href="${Clienthost}download/${device.codename}/${version.version_code}/${latestBuild.file_name}">Download</a>\n\n` +
                   `#${device.codename} #aospextended`
