@@ -1,5 +1,5 @@
+import 'dotenv/config'
 import Fastify from 'fastify'
-import fastifyEnv from 'fastify-env'
 import fastifyCors from 'fastify-cors'
 import fastifyRedis from 'fastify-redis'
 import fastifyStatic from 'fastify-static'
@@ -18,60 +18,7 @@ import { buildsDir } from './constants.js'
 const fastify = Fastify({
   logger: true
 })
-const envSchema = {
-  type: 'object',
-  required: [
-    'PORT',
-    'DB_NAME',
-    'DB_SERVER',
-    'DB_USERNAME',
-    'DB_PASSWORD',
-    'TELEGRAM_BOT_TOKEN',
-    'TELEGRAM_CHAT_ID',
-    'NTBA_FIX_319',
-    'CRYPTO_PASSWORD',
-    'CRYPTO_IV'
-  ],
-  properties: {
-    PORT: {
-      type: 'number',
-      default: 3000,
-    },
-    DB_NAME: {
-      type: 'string',
-    },
-    DB_SERVER: {
-      type: 'string',
-    },
-    DB_USERNAME: {
-      type: 'string',
-    },
-    DB_PASSWORD: {
-      type: 'string',
-    },
-    TELEGRAM_BOT_TOKEN: {
-      type: 'string',
-    },
-    TELEGRAM_CHAT_ID: {
-      type: 'string',
-    },
-    NTBA_FIX_319: {
-      type: 'number',
-      default: 1,
-    },
-    CRYPTO_PASSWORD: {
-      type: 'string',
-    },
-    CRYPTO_IV: {
-      type: 'string',
-    },
-  },
-}
-const envOptions = {
-  schema: envSchema,
-  dotenv: true,
-  data: process.env,
-}
+
 const dbOptions = {
   maxPoolSize: 7,
   socketTimeoutMS: 60000,
@@ -84,7 +31,6 @@ const dbOptions = {
 // Fastify Plugins
 fastify.register(fastifyCors)
 fastify.register(fastifyRedis)
-fastify.register(fastifyEnv, envOptions)
 fastify.register(fastifyCompress, { global: true })
 fastify.register(fastifyStatic, { root: buildsDir })
 
