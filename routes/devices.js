@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { isEmpty, orderBy, find } from 'lodash-es'
+import { isEmpty, orderBy, find, filter } from 'lodash-es'
 import { devicesJson, devicesBranch, cacheInterval } from '../constants.js'
 
 export default async function devices(fastify, options) {
@@ -92,17 +92,17 @@ export default async function devices(fastify, options) {
 const getFilteredArray = (deviceArray, codeVersion) => {
   let filteredArray = deviceArray.reduce((newArray, device) => {
     if (device.codename !== 'treble_gsi') {
-      let versionData = find(device.supported_versions, {
-        version_code: codeVersion,
+      let versionData = filter(device.supported_versions, function(v) {
+        return v.version_code === codeVersion || v.version_code === codeVersion + '_gapps'
       })
-      if (versionData) {
+      if (versionData.length > 0) {
         newArray.push({
           name: device.name,
           brand: device.brand,
           codename: device.codename,
-          maintainer_name: versionData.maintainer_name,
-          maintainer_url: versionData.maintainer_url,
-          xda_thread: versionData.xda_thread,
+          maintainer_name: versionData[0].maintainer_name,
+          maintainer_url: versionData[0].maintainer_url,
+          xda_thread: versionData[0].xda_thread,
         })
       }
     }
